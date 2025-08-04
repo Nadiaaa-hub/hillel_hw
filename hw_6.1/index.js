@@ -28,7 +28,7 @@ let sum = 0;
 array.sort((a, b) => a - b);
 
 for (let i = 0; i < array.length; i++) {
-  if (i > 0) {
+  if (array[i] > 0) {
     sum += array[i];
   }
 }
