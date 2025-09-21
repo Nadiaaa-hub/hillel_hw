@@ -6,40 +6,42 @@
     <link rel="stylesheet" href="./index.css" />
     <title>Slider</title>
   </head>
-  <div class="container">
-    <div class="card__slider">
-      <button class="card__button carousel-button prev" type="button">
-        Prev
-      </button>
-      <div class="card__container">
-        <ul class="card__ul">
-          <li class="card__li">
-            <img src="./img/DSC00038.JPG" alt="" class="card__image" />
-          </li>
-          <li class="card__li">
-            <img src="./img/DSC00041.JPG" alt="" class="card__image" />
-          </li>
-          <li class="card__li">
-            <img src="./img/DSC00042.JPG" alt="" class="card__image" />
-          </li>
-          <li class="card__li">
-            <img src="./img/DSC00046.JPG" alt="" class="card__image" />
-          </li>
-        </ul>
-        <div class="pagination swiper-pagination">
-          <span class="pagination__button"></span>
-          <span class="pagination__button"></span>
-          <span class="pagination__button"></span>
-          <span class="pagination__button"></span>
-          <span class="pagination__button"></span>
-        </div>
-      </div>
-      <button class="card__button carousel-button next" type="button">
-        Next
-      </button>
-    </div>
-  </div>
   <body>
-    <script src="./index.js"></script>
+    <div class="carousel">
+      <div class="card__slider">
+        <button class="card__button prev" type="button">Prev</button>
+
+        <div class="card__carousel">
+          <ul class="card__ul">
+            <li class="card__li">
+              <img
+                src="./img/DSC00038.JPG"
+                alt="Photo 1"
+                class="card__image"
+                id="first-img" />
+            </li>
+            <li class="card__li">
+              <img src="./img/DSC00041.JPG" alt="Photo 2" class="card__image" />
+            </li>
+            <li class="card__li">
+              <img src="./img/DSC00042.JPG" alt="Photo 3" class="card__image" />
+            </li>
+            <li class="card__li">
+              <img src="./img/DSC00046.JPG" alt="Photo 4" class="card__image" />
+            </li>
+          </ul>
+
+          <div class="pagination">
+            <span class="pagination__button"></span>
+            <span class="pagination__button"></span>
+            <span class="pagination__button"></span>
+            <span class="pagination__button"></span>
+          </div>
+        </div>
+
+        <button class="card__button next" type="button">Next</button>
+      </div>
+    </div>
+    <script src="./carousel.js"></script>
   </body>
 </html>
