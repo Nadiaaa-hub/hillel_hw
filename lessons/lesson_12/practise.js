@@ -7,6 +7,8 @@ const cities = {
 };
 
 document.querySelector("button").addEventListener("click", (event) => {
+  event.preventDefault();
+
   const info = document.forms.info;
   const name = info.name.value;
   const gender = info.gender.value;
@@ -18,11 +20,17 @@ document.querySelector("button").addEventListener("click", (event) => {
     if (info.languages[i].checked) {
       languages.push(info.languages[i].value);
     }
-    console.log(`
-    Name: ${name}
-    Gender: ${gender};
-    City: ${cities[city]};
-    Address:, ${address};
-    Languages: ${languages}`);
   }
+
+  const result = document.createElement("div");
+  result.innerHTML += `
+    <p>Name: ${name}</p>
+    <p>Gender: ${gender}</p>
+    <p>City: ${cities[city]}</p>
+    <p>Address:, ${address}</p>
+    <p>Languages: ${languages}</p>
+    `;
+  document.body.appendChild(result);
+
+  info.remove();
 });
