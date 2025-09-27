@@ -26,6 +26,7 @@ function nextSlide() {
     if (currentIndex < imgs.length - 1) {
       imgs[currentIndex].classList.remove("active");
       dots[currentIndex].classList.remove("active");
+
       currentIndex++;
       imgs[currentIndex].classList.add("active");
       dots[currentIndex].classList.add("active");
@@ -45,4 +46,18 @@ function prevSlide() {
     }
   });
 }
+
 prevSlide();
+
+const autoplay = setInterval(() => {
+  if (currentIndex < imgs.length - 1) {
+    btnNext.click();
+  } else {
+    imgs[currentIndex].classList.remove("active");
+    dots[currentIndex].classList.remove("active");
+
+    currentIndex = 0;
+    imgs[currentIndex].classList.add("active");
+    dots[currentIndex].classList.add("active");
+  }
+}, 3000);

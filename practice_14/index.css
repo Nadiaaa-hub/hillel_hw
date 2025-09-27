@@ -6,19 +6,6 @@ html {
     padding: 0;
 }
 
-html,
-body {
-    max-width: 100%;
-
-}
-
-.header {
-    position: absolute;
-    top: 0px;
-    left: 0;
-    width: 100%;
-    padding-top: 16px;
-}
 
 .carousel {
     display: flex;
@@ -55,7 +42,6 @@ body {
     display: inline-block;
     min-width: 100%;
     box-sizing: border-box;
-    min-width: 100%;
 }
 
 .card__image {
@@ -69,7 +55,6 @@ body {
     transition: opacity 0.3s ease-in;
     border-radius: 8px;
     pointer-events: none;
-
 }
 
 .card__image.active {
