@@ -41,7 +41,10 @@ convertDateButton.addEventListener("click", function () {
     convertedDateOutput.textContent = "Converted data: ".concat(convertedDate);
     convertedDateOutput.classList.remove("hidden");
   } else {
-    errorAlert.innerHTML = "Validation error!<strong>".concat(userInput, "</strong> ");
+    errorAlert.innerHTML = "Validation error!<strong>".concat(
+      userInput,
+      "</strong> "
+    );
     errorAlert.classList.remove("hidden");
   }
 });
