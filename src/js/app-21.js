@@ -1,4 +1,6 @@
-"use strict";
+// "use strict";
+
+import "./style.scss";
 
 var alertToggleBtn = document.getElementById("alertToggleBtn");
 var toggleAlert = document.getElementById("toggleAlert");

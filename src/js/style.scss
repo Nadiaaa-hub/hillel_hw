@@ -1,0 +1,189 @@
+// Theme variables
+$brand-primary: #0d6efd;
+$brand-success: #198754;
+$brand-warning: #ffc107;
+$brand-danger: #dc3545;
+$muted: #6c757d;
+$bg: #f8f9fa;
+$text: #212529;
+$max-width: 1100px;
+$radius: 0.5rem;
+$gap: 1rem;
+
+// Breakpoints map
+$breakpoints: (
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+);
+
+// Media mixin
+@mixin respond($break) {
+  $size: map-get($breakpoints, $break);
+  @if $size {
+    @media (min-width: $size) {
+      @content;
+    }
+  } @else {
+    @warn "Breakpoint `#{$break}` not found in $breakpoints.";
+  }
+}
+
+// Utility mixins
+@mixin card-style {
+  background: white;
+  border-radius: $radius;
+  box-shadow: 0 6px 20px rgba(16, 24, 40, 0.05);
+  padding: 1.25rem;
+}
+
+// Color helpers
+@function tone($color, $percent) {
+  @return mix(white, $color, $percent);
+}
+
+// Generate alert color classes
+$alerts: (
+  success: $brand-success,
+  warning: $brand-warning,
+  danger: $brand-danger,
+  info: $brand-primary,
+);
+
+@each $name, $col in $alerts {
+  .alert-#{$name} {
+    background-color: tone($col, 92%);
+    color: $col;
+    border: 1px solid lighten($col, 35%);
+  }
+}
+
+// Base
+* {
+  box-sizing: border-box;
+}
+html,
+body {
+  height: 100%;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue",
+    Arial;
+  color: $text;
+  background: $bg;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.container {
+  max-width: $max-width;
+}
+
+// Hidden utility
+.hidden {
+  display: none !important;
+}
+
+// Header / buttons
+#modalButton {
+  @extend .btn-primary;
+  border-radius: 0.4rem;
+  box-shadow: 0 3px 8px rgba(13, 110, 253, 0.15);
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+  &:hover {
+    transform: translateY(-1px);
+  }
+}
+
+#alertToggleBtn {
+  @extend .btn-warning;
+  border-radius: 0.4rem;
+  &:active {
+    transform: translateY(1px);
+  }
+}
+
+// Modal custom styles
+.modal-content {
+  border-radius: 0.75rem;
+  padding: 0;
+  .modal-header {
+    background: tone($brand-primary, 92%);
+    border-bottom: none;
+    .modal-title {
+      color: $brand-primary;
+      font-weight: 600;
+    }
+  }
+  .modal-body {
+    padding: 1.25rem 1.5rem;
+    color: $muted;
+  }
+  .modal-footer {
+    border-top: none;
+    padding: 0.75rem 1.25rem;
+    button {
+      min-width: 80px;
+    }
+  }
+}
+
+// Card with form
+.card.p-3 {
+  @include card-style;
+  .form-label {
+    font-weight: 600;
+    color: $muted;
+  }
+  input#userDateInput {
+    border-radius: 0.45rem;
+    border: 1px solid lighten($muted, 30%);
+    padding: 0.6rem 0.75rem;
+    &:focus {
+      outline: none;
+      box-shadow: 0 0 0 0.2rem rgba($brand-primary, 0.12);
+      border-color: $brand-primary;
+    }
+  }
+  #convertDateButton {
+    @extend .btn-success;
+  }
+  #resultContainer {
+    margin-top: 0.75rem;
+    p#convertedDateOutput {
+      margin: 0;
+      font-weight: 600;
+      &.hidden {
+        @extend .hidden;
+      }
+    }
+    #errorAlert {
+      margin: 0;
+      &.hidden {
+        @extend .hidden;
+      }
+    }
+  }
+}
+
+// Responsive tweaks
+@include respond(md) {
+  .row.mb-5 {
+    align-items: center;
+  }
+  .card.p-3 {
+    display: flex;
+    align-items: flex-start;
+    gap: $gap;
+  }
+}
+
+// Small helpers
+.lead.text-primary {
+  color: $brand-primary !important;
+}
+
+// Accessibility: focus rings for keyboard users
+:focus {
+  outline: 3px solid tone($brand-primary, 88%);
+  outline-offset: 2px;
+}
