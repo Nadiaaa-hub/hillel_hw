@@ -14,33 +14,6 @@ let todos = [
     createdAt: new Date(),
     updatedAt: new Date(),
   },
-  {
-    id: nextId++,
-    title: "Walk",
-    description: "Fresh air on the balcony",
-    priority: "medium",
-    status: "done",
-    createdAt: new Date(),
-    updatedAt: new Date(),
-  },
-  {
-    id: nextId++,
-    title: "Buy groceries",
-    description: "Cottage cheese, eggs",
-    priority: "medium",
-    status: "pending",
-    createdAt: new Date(),
-    updatedAt: new Date(),
-  },
-  {
-    id: nextId++,
-    title: "Do homework",
-    description: "Finally understand Node.js",
-    priority: "high",
-    status: "in-progress",
-    createdAt: new Date(),
-    updatedAt: new Date(),
-  },
 ];
 
 app.get("/todos", (req, res) => {
