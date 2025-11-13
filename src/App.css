@@ -1,0 +1,406 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
+
+:root {
+  --bg: #f5f7fb;
+  --card: #ffffff;
+  --muted: #6c757d;
+  --primary: #0d6efd;
+  --success: #198754;
+  --danger: #dc3545;
+  --accent: #20c997;
+  --radius: 12px;
+  --gap: 14px;
+  --max-width: 1280px;
+  --shadow: 0 8px 28px rgba(15, 25, 40, 0.06);
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+}
+
+/* page root */
+#root {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+  background: linear-gradient(180deg, var(--bg), #eef2f7);
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+/* logos & cards (kept from original) */
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+  background: var(--card);
+  border-radius: 14px;
+  box-shadow: var(--shadow);
+}
+
+/* utility text */
+.read-the-docs {
+  color: #888;
+}
+
+/* App layout */
+.app {
+  display: flex;
+  justify-content: center;
+  padding: 1rem 0 3rem;
+}
+
+.container {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* header */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 18px;
+  gap: 12px;
+}
+
+.header h1 {
+  margin: 0;
+  font-size: 1.5rem;
+  color: #222;
+}
+
+.header .header-meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.header .badge {
+  background: rgba(255, 255, 255, 0.6);
+  padding: 6px 10px;
+  border-radius: 999px;
+  box-shadow: var(--shadow);
+  color: var(--muted);
+  font-weight: 700;
+}
+
+/* main content split */
+.content {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: var(--gap);
+}
+
+@media (max-width: 800px) {
+  .content {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* left panel (form) */
+.form-panel {
+  background: var(--card);
+  border-radius: var(--radius);
+  padding: 18px;
+  box-shadow: var(--shadow);
+}
+
+.form-panel h3 {
+  margin-top: 0;
+  color: var(--muted);
+}
+
+/* form */
+.todo-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.todo-form label {
+  display: block;
+  font-size: .95rem;
+  color: var(--muted);
+}
+
+.todo-form input,
+.todo-form textarea,
+.todo-form select {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid #e6e9ee;
+  margin-top: 6px;
+  font-size: .95rem;
+  background: #fff;
+  outline: none;
+  transition: box-shadow .12s ease, border-color .12s ease;
+}
+
+.todo-form textarea {
+  min-height: 84px;
+  resize: vertical;
+}
+
+.todo-form input:focus,
+.todo-form textarea:focus,
+.todo-form select:focus {
+  box-shadow: 0 8px 24px rgba(13, 110, 253, 0.08);
+  border-color: var(--primary);
+}
+
+/* actions */
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.btn {
+  border: 1px solid #e0e3e8;
+  background: transparent;
+  padding: 8px 12px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.btn.primary,
+.btn--primary {
+  background: var(--primary);
+  color: #fff;
+  border-color: var(--primary);
+}
+
+.btn.danger,
+.btn--danger {
+  background: var(--danger);
+  color: #fff;
+  border-color: darken(var(--danger), 6%);
+}
+
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* right panel (list) */
+.list-panel {
+  background: var(--card);
+  border-radius: var(--radius);
+  padding: 18px;
+  box-shadow: var(--shadow);
+}
+
+.toolbar {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 12px;
+  align-items: center;
+}
+
+.toolbar input[type="text"],
+.toolbar input {
+  flex: 1;
+  padding: 8px 10px;
+  border-radius: 10px;
+  border: 1px solid #e6e9ee;
+}
+
+/* empty state */
+.empty {
+  padding: 36px;
+  text-align: center;
+  color: var(--muted);
+  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.02);
+}
+
+/* todo list & cards */
+.todo-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.todo-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #eef2f6;
+  background: linear-gradient(180deg, #fff, #fbfdff);
+}
+
+.card-main {
+  flex: 1;
+  margin-right: 12px;
+}
+
+.card-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.card-title strong {
+  font-size: 1.02rem;
+}
+
+.badge.priority {
+  padding: 4px 8px;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  color: #fff;
+  text-transform: capitalize;
+}
+
+.badge.priority.low {
+  background: #6c757d;
+}
+
+.badge.priority.medium {
+  background: var(--accent);
+}
+
+.badge.priority.high {
+  background: #ff6b6b;
+}
+
+.card-desc {
+  margin: 8px 0;
+  color: var(--muted);
+}
+
+.card-meta {
+  display: flex;
+  gap: 12px;
+  color: #9aa3ae;
+  font-size: .82rem;
+}
+
+.card-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
+  min-width: 140px;
+}
+
+.card-actions .buttons {
+  display: flex;
+  gap: 6px;
+}
+
+.status-select select,
+.card-actions .status {
+  padding: 6px 8px;
+  border-radius: 8px;
+  border: 1px solid #e6e9ee;
+  background: #fff;
+}
+
+/* status cues */
+.todo-card.done {
+  opacity: 0.85;
+  border-left: 6px solid var(--success);
+}
+
+.todo-card.in-progress {
+  border-left: 6px solid #0dcaf0;
+}
+
+.todo-card.pending {
+  border-left: 6px solid #ffc107;
+}
+
+/* small screens */
+@media (max-width: 800px) {
+  .card-actions {
+    min-width: auto;
+    align-items: stretch;
+    flex-direction: row;
+  }
+
+  .card-actions .status {
+    margin-right: 8px;
+  }
+
+  .card-actions .buttons {
+    order: 2;
+  }
+}
