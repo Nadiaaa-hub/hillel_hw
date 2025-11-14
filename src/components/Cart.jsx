@@ -1,19 +1,16 @@
-function Cart({ cart, removeFromCart }) {
-  if (cart.length === 0) {
-    return <p>Cart is empty</p>;
-  }
-
+export default function Cart({ cart, removeFromCart }) {
   return (
     <div>
-      <h2>Cart </h2>
-      {cart.map((item) => (
-        <div key={item.id}>
-          {item.name}: {item.price} ₴
-          <button onClick={() => removeFromCart(item.id)}>Remove</button>
-        </div>
-      ))}
+      <h2>Cart</h2>
+      <ul>
+        {cart.length === 0 && <span>Cart is empty</span>}
+        {cart.map((item, index) => (
+          <li key={index}>
+            {item.name}: {item.price} ₴
+            <button onClick={() => removeFromCart(index)}>Remove</button>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }
-
-export default Cart;

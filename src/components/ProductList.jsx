@@ -1,8 +1,12 @@
 import ProductItem from "./ProductItem";
 
-function ProductList({ products, addToCart, cart }) {
+export default function ProductList({
+  products = [],
+  addToCart,
+  removeFromCart,
+}) {
   return (
-    <div>
+    <ul>
       {products.map((product) => (
         <ProductItem
           key={product.id}
@@ -10,10 +14,9 @@ function ProductList({ products, addToCart, cart }) {
           name={product.name}
           price={product.price}
           addToCart={addToCart}
+          removeFromCart={removeFromCart}
         />
       ))}
-    </div>
+    </ul>
   );
 }
-
-export default ProductList;

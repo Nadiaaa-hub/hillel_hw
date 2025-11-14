@@ -1,4 +1,4 @@
-function ProductItem({ id, name, price, addToCart, removeFromCart }) {
+export default function ProductItem({ id, name, price, addToCart }) {
   return (
     <div>
       <p>
@@ -7,9 +7,6 @@ function ProductItem({ id, name, price, addToCart, removeFromCart }) {
       <button onClick={() => addToCart({ id, name, price })}>
         Add to cart
       </button>
-      <button onClick={() => removeFromCart(id)}> Remove from cart</button>
     </div>
   );
 }
-
-export default ProductItem;
