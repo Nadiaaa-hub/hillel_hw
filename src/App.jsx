@@ -3,13 +3,14 @@ import ProductList from "./components/ProductList";
 import Cart from "./components/Cart";
 import "./App.css";
 
-const products = [
-  { id: 1, name: "Melon", price: 100 },
-  { id: 2, name: "Watermelon", price: 200 },
-];
 function App() {
   const [cart, setCart] = useState([]);
 
+  const loadData = async () => {
+    const response = await fetch("http://localhost:5173/data.json");
+    const result = await response.json();
+    setCart(result);
+  };
   const addToCart = (product) => {
     setCart([...cart, product]);
   };
@@ -22,7 +23,10 @@ function App() {
 
   return (
     <div>
-      <ProductList products={products} addToCart={addToCart} />
+      <button type="button" onClick={loadData}>
+        Load Data
+      </button>
+      {/* <ProductList products={products} addToCart={addToCart} /> */}
       <Cart cart={cart} removeFromCart={removeFromCart} />
     </div>
   );
