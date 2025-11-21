@@ -1,18 +1,12 @@
 import { useEffect, useState } from "react";
-import UserList from "./components/UserList";
-import UserForm from "./components/UserForm";
-
+import { BrowserRouter, Routes, Route } from "react-router";
+import FormPage from "./components/FormPage";
+import ContactsPage from "./components/ContactsPage";
 import "./App.css";
 
 function App() {
   const [contacts, setContacts] = useState([]);
-  const [formData, setFormData] = useState({
-    name: "",
-    phone: "",
-    email: "",
-  });
-
-  const [submit, setSubmit] = useState(false);
+  const [formData, setFormData] = useState({ name: "", phone: "", email: "" });
 
   useEffect(() => {
     const loadData = async () => {
@@ -29,48 +23,25 @@ function App() {
     loadData();
   }, []);
 
-  const handleAddClick = () => {
-    setSubmit(true);
-  };
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
-  };
-
-  const handleAddContact = (contact) => {
-    const { key, id, name, phone, email } = contact;
-    const newContact = { key, id, name, phone, email };
-    setContacts([...contacts, newContact]);
-    setSubmit(false);
-  };
-
   return (
-    <>
+    <BrowserRouter>
       <div className="app">
-        <h1 className="title">My Contacts</h1>
-
-        {submit && (
-          <UserForm
-            formData={formData}
-            handleChange={handleChange}
-            handleAddContact={handleAddContact}
+        <Routes>
+          <Route path="/" element={<ContactsPage contacts={contacts} />} />
+          <Route
+            path="/contacts-form"
+            element={
+              <FormPage
+                formData={formData}
+                setFormData={setFormData}
+                contacts={contacts}
+                setContacts={setContacts}
+              />
+            }
           />
-        )}
-
-        {!submit && (
-          <>
-            <button className="add-btn" onClick={handleAddClick}>
-              Add Contact
-            </button>
-            <UserList contacts={contacts} />
-          </>
-        )}
+        </Routes>
       </div>
-    </>
+    </BrowserRouter>
   );
 }
 
