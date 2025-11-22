@@ -4,6 +4,7 @@ import FormPage from "./components/FormPage";
 import ContactsPage from "./components/ContactsPage";
 import { LanguageContext, ThemeContext } from "./components/contexts/contexts";
 import "./App.css";
+import Menu from "./components/Menu";
 
 function App() {
   const [contacts, setContacts] = useState([]);
@@ -28,6 +29,8 @@ function App() {
       <ThemeContext.Provider value={{ theme, setTheme }}>
         <div className={theme}>
           <BrowserRouter>
+            <Menu />
+
             <Routes>
               <Route path="/" element={<ContactsPage contacts={contacts} />} />
               <Route

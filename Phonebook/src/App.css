@@ -227,3 +227,23 @@ button {
   border-radius: 6px;
   transition: 0.2s;
 }
+
+.menu {
+
+  display: flex;
+  gap: 20px;
+  padding: 10px;
+  justify-content: center;
+}
+
+.menu.light a,
+.menu.dark a {
+  color: #ff69b4;
+  ;
+  text-decoration: none;
+}
+
+.menu.light a:hover,
+.menu.dark a:hover {
+  text-decoration: underline;
+}
