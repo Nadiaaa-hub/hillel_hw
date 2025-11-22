@@ -1,5 +1,7 @@
 import { useNavigate } from "react-router";
 import UserForm from "./UserForm";
+import { useContext, useEffect } from "react";
+import { LanguageContext, ThemeContext } from "./contexts/contexts";
 
 export default function FormPage({
   formData,
@@ -8,6 +10,8 @@ export default function FormPage({
   setContacts,
 }) {
   const navigate = useNavigate();
+  const { language, setLanguage } = useContext(LanguageContext);
+  const { theme, setTheme } = useContext(ThemeContext);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -21,11 +25,35 @@ export default function FormPage({
     navigate("/");
   };
 
+  const handleLanguage = () => {
+    setLanguage(language === "UA" ? "EN" : "UA");
+  };
+
+  const handleTheme = () => {
+    const newTheme = theme === "dark" ? "light" : "dark";
+    setTheme(newTheme);
+    document.body.className = newTheme;
+  };
+
+  useEffect(() => {
+    document.body.className = theme;
+  }, [theme]);
+
   return (
-    <UserForm
-      formData={formData}
-      handleChange={handleChange}
-      handleAddContact={handleAddContact}
-    />
+    <div>
+      <button onClick={handleLanguage}>
+        {language === "UA" ? "UA" : "EN"}
+      </button>
+      <button onClick={handleTheme}>{theme === "dark" ? "🌙" : "☀️"}</button>
+      <h1 className="title">
+        {language === "UA" ? "Новий контакт" : "New contact"}
+      </h1>
+
+      <UserForm
+        formData={formData}
+        handleChange={handleChange}
+        handleAddContact={handleAddContact}
+      />
+    </div>
   );
 }
